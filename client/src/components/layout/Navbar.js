@@ -14,8 +14,7 @@ class Navbar extends Component {
               }}
               className="col s5 brand-logo center black-text"
             >
-              <i className="material-icons">code</i>
-              MERN
+              <img alt="logo-slash" style={{width: "300px"}} src="https://images.prismic.io/slash-website-2020-uat/c9e42a59-7f19-4180-b49c-cee0c1656af2_Slash_Alternative+Primary.png?auto=compress,format&rect=0,327,1755,597&w=500&h=170" />
             </Link>
           </div>
         </nav>

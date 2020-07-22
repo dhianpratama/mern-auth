@@ -2,8 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
+const serveStatic = require('serve-static');
+const path = require('path');
 
-const users = require("./routes/api/users");
+const routers = require("./routes");
 
 const app = express();
 
@@ -34,7 +36,25 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 
 // Routes
-app.use("/api/users", users);
+app.use("/api", routers);
+
+if (process.env.NODE_ENV === 'production') {
+  // Serve static revved files with uncoditional cache
+  app.use(serveStatic(path.join(process.cwd(), 'client/build'), {
+    index: false
+  }));
+
+  // Route any non API and non static file to React Client Router for SPA development
+  app.use((req, res) => {
+    res.sendFile(path.join(process.cwd(), 'client/build', 'index.html'));
+  });  
+}
+
+// Fallback to 404
+app.use((req, res) => {
+  res.status(404);
+  res.json({ message: '404 - Not Found' });
+});
 
 const port = process.env.PORT || 5000;
 

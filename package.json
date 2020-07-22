@@ -1,11 +1,11 @@
 {
-  "name": "mern-auth",
+  "name": "slash-test",
   "version": "1.0.0",
-  "description": "Mern Auth Example",
+  "description": "Slash Login Test",
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
-    "start": "node server.js",
+    "start": "npm run build --prefix client && NODE_ENV=production node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
@@ -22,6 +22,7 @@
     "mongoose": "^5.3.11",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "serve-static": "^1.14.1",
     "validator": "^10.9.0"
   },
   "devDependencies": {

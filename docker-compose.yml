@@ -1,0 +1,21 @@
+version: "3.1"
+
+services:
+  slash-test-app:
+    build: ./
+    image: slash-test-app
+    restart: always
+    ports:
+      - 3000:3000
+    environment:
+      PORT: 3000
+      MONGO_URI: mongodb://mongo:27017/slash-test
+
+  mongo:
+    image: mongo
+    volumes:
+      - mongo-data:/data/db"
+    restart: always
+
+volumes:
+  mongo-data:
