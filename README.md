@@ -1,5 +1,8 @@
 # slash-test
 
+## Demo
+http://ec2-52-77-253-199.ap-southeast-1.compute.amazonaws.com/
+
 ## Configuration
 Make sure to add your own `MONGOURI` from your [mLab](http://mlab.com) database in `config/keys.js`.
 
